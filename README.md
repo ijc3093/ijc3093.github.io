@@ -6,6 +6,10 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Markdown
 
+How to deploy your website? Copy and paste url into google: "ijc3093.github.io"
+Create new website using github
+https://docs.github.com/en/pages/quickstart
+
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
@@ -36,4 +40,3 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
 
-How to deploy your website? Copy and paste url into google: "ijc3093.github.io"
