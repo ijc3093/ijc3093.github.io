@@ -7,6 +7,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### Markdown
 
 How to deploy your website? Copy and paste url into google: "ijc3093.github.io"
+
 Create new website using github
 https://docs.github.com/en/pages/quickstart
 
