@@ -1,0 +1,118 @@
+
+[
+    {
+      "id":                 0,
+      "WorkName":           "Goblet Squats",
+      "Load":               "8kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "Standing with feet at shoulder-width apart and toes pointing forward, cup the dumbbell with your hands, holding it close to your chest at all times. Starting with a slight hip hinge, perform squat by bending at the knees while maintaining upright chest throughout the movement. ",
+      "image":              "GobletSquats"
+   },
+          
+          
+   {
+      "id":                 1,
+      "WorkName":           "Renegade Row",
+      "Load":               "3kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "At planking position with arm fully extended at shoulder width apart, begin with the dumbbells in your grip and glutes squeezed and core embraced throughout the motion. Followed by a rowing motion, draw your elbows up and close to your body while maintaining minimal movement at the hips and return to initial position. Repeat and alternate the movement with the other arm.",    
+      "image":              "Renegade" 
+   },
+
+          
+   {
+      "id":                 2,
+      "WorkName":           "Handcuff Hinge",
+      "Load":               "8kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "With a weight held behind you, preferably below waist area, begin with standing tall with shoulders roll back and down (chest out), glutes squeezed and a slight bend at the knees. Without moving other parts of the body, begin exercise just by pushing the glutes back till you feel a stretch on your hamstrings.",
+      "image":              "HandcuffHinge" 
+   }
+          
+   ,
+   {
+       "id":                 3,
+      "WorkName":           "Push Ups",
+      "Load":               "Bodyweight",
+      "Sets":               "3",
+      "Reps":               "8 to 10",
+      "Description":        "With hands placed underneath the shoulder and legs at hip-width apart, begin pushing up at a plank-like position with glutes squeezed and core embraced. Then, bend arms while controlling the downward body motion, making sure that the upper and lower body moves in a straight line. ",
+      "image":              "PushUps"
+   }
+          
+          
+   ,
+   {
+       "id":                 4,
+      "WorkName":           "Stationary Lunge",
+      "Load":               "3",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "Standing with one leg in front and one leg behind, and holding one dumbbell in one hand placed at the ear level and the other hand for balance, begin motion by bending both legs at the same time, forming an about 90-degree bend in both knees. Subsequently, return back to initial position and press the dumbbells above your head at the same time. Repeat motion. ",
+      "image":              "StationaryLunge"
+   },
+
+          
+          
+   {
+       "id":                 5,
+      "WorkName":           "Bicep Curls",
+      "Load":               "3kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "Hold dumbbells with hands placed by the side of your body and palms facing forward, curl your arms up while squeezing your biceps throughout the motion. Minimise the movement of your elbow during the motion. ",
+      "image":              "BicepCurls.png"
+   }
+   ,
+    
+   {
+       "id":                 6,
+      "WorkName":           "Medicine Ball L-R",
+      "Load":               "3kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "At split stance with right foot and toes pointing forward, ensure that you stand up tall at all times (no hunching of upper body). Hold the ball at the bottom left of your body with the body slightly leaning forward, swing the ball up to the top right and mid pass your right shoulder while maintaining minimal bend at the arms at all times. ",
+      "image":              "MedicineBall"
+   }
+   ,
+
+   {
+      "id":                 7,
+      "WorkName":           "Medicine Ball R-L",
+      "Load":               "3kg",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "Switch feet stance, ensure that you stand up tall at all (no hunching of upper body) and perform the opposite motion. Swing the ball down to the initial spot while holding a strong core throughout the movement.  ",
+      "image":              "MedicineBall2"
+   },
+      
+
+   {
+       "id":                 8,
+      "WorkName":           "Loaded Lunge",
+      "Load":               "8kg",
+      "Sets":               "3",
+      "Reps":               "12 to 15",
+      "Description":        "At split stance with respective legs placed forward and backwards, hold on to the dumbbells by the side of your body and ensuring a straight spine at all times. Begin the motion by lunging down and end it by extending both knees up. Minimise twisting of the hips throughout the exercise. Repeat the motion.",
+      "image":              "LoadedLunge"
+   },
+      
+   
+   
+   {
+       "id":                 9,
+      "WorkName":           "Inclined Push Ups ",
+      "Load":               "Bodyweight",
+      "Sets":               "3",
+      "Reps":               "10 to 12",
+      "Description":        "Perform push up with hands on an elevated ground with knees off the ground. With glutes squeezed and core embraced, bend your arms while controlling the downward body motion, making sure that the upper and lower body moves in a straight line.",
+      "image":              "InclinedPush"
+       
+       
+       
+   }
+          
+]

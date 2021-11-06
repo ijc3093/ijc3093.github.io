@@ -1,0 +1,66 @@
+/* We occasionally break convention by using ids 
+*  more than once for the sake of overriding Bootstrap styling
+*/
+
+#navigation{
+  background-color: #41c0ea;
+}
+#navigation li{
+  padding: auto 2em;
+}
+#navigation .nav-link{
+  padding: 1em;
+  color:white;
+}
+#navigation .nav-link:hover{
+  background-color:#65abbe;
+}
+#navigation .nav-link.active{
+  font-weight:bold;
+}
+
+
+#custom-toggler{
+  border-color:#41c0ea;
+}
+/* helps lock footer */
+#content.container{
+  min-height: 66vh;
+}
+#content{
+  padding-top:4em;
+}
+#content h3{
+  padding-bottom: 0.75em;
+}
+/* #content p{
+  border: 1px solid #f0e9eb;
+  background-color: #f7f7f7;
+  padding: 0.75em;
+} */
+
+#content .box{
+  border: 1px solid #f0e9eb;
+  background-color: #f7f7f7;
+  padding: 0.75em;
+  margin-bottom: 1em;
+}
+#content button{
+  margin-bottom: 2em;
+}
+#content button a{
+  color:white;
+}
+#content .text-center .btn{
+  margin-bottom: 3em;
+}
+#submit-btn{
+  margin-bottom: 2em;
+}
+#footer{
+  padding-top: 2em;
+  background-color:#DCDCDC;	
+  border-top: 1px solid #808080;
+  bottom:0;
+  width: 100vw;
+}
