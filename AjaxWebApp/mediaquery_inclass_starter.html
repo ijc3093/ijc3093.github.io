@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RWD with percentages</title>
+  <style>
+    main 
+    {
+      width: 90%;
+      margin: 0 auto;
+      font-family: Helvetica;
+      float: left; width: 80vw
+    }
+    
+    small, small a 
+    {
+      font-size: .7rem;
+      color: gray;
+    }
+    
+    aside 
+    {
+      width: 30%;
+      margin-right: 1em;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; 
+      display: none;
+    }
+    
+    section 
+    {
+      background-color: #322456;
+      width: 100%;
+    }
+    
+    aside, section 
+    {
+      height: 15.5em;
+      float: left;
+      border-radius: 5px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    
+    h1 
+    {
+      font-size: 1rem;
+      padding: 6em 0;
+    }
+    
+      
+        @media screen and (min-width:31em)
+        {
+          section 
+          {
+            background-color: #184177;
+          }
+          
+          aside
+          {
+            background-image: url(images/highland_park.jpg);
+            display: block;
+            width: 100%;
+
+          }
+        }
+
+        @media screen and (min-width:50em)
+        {
+          section 
+          {
+            background-color: #a84609;
+          }
+          
+          aside
+          {
+            background-image: url(images/schoen_place.jpg);
+            display: block;
+            width: 100%;
+
+          }
+        }
+
+        @media screen and (min-width:62em)
+        {
+          section 
+          {
+            background-color: #86b5f1;
+            width: calc(70% - 1em);
+          }
+          
+          aside
+          {
+            background-image: url(images/mt_hope_henry_lewis_morgan_mausoleum.jpg);
+            display: block;
+            width: 30%;
+            
+          }
+        }
+
+
+</style>
+</head>
+<body>
+  <main>
+    <aside></aside>
+    <section><h1>Winter in Rochester</h1></section>
+    <small>Photos from <a href="https://www.montanusphotography.com/nmphoto/winter-scenes/" target="_blank">MontanusPhotography.com</a>.</small>
+
+
+  </main>
+</body>
+</html>
+

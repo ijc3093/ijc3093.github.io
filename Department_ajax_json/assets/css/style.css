@@ -1,0 +1,749 @@
+/* Color Scheme */
+
+/* yellow */
+.salomie {
+    background-color: #FFDD87 !important;
+}
+.salomie-text {
+    color: #FFDD87 !important;
+}
+
+/* blue */
+.casal {
+    background-color: #325D6D !important;
+}
+.casal-text {
+    color: #325D6D !important;
+}
+
+/* teal*/
+.keppel {
+    background-color: #31B7A7 !important;
+}
+.keppel-text {
+    color: #31B7A7 !important;
+}
+
+/* orange */
+.tangerine {
+    background-color: #FFAA66 !important;
+}
+.tangerine-text {
+    color: #FFAA66 !important;
+}
+
+/* red orange */
+.persimmon {
+    background-color: black!important;
+}
+.persimmon-text {
+    color: #FF5F47 !important;
+}
+
+
+/* General Styles */
+.btn {
+    background-color: #FF5F47;
+}
+
+
+.btn:hover{
+    background-color: #ff8f7e;
+    text-decoration: none;
+}
+
+.modal {
+    padding: 15px;
+}
+
+#view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+}
+
+.container.container-main {
+    width: 100%;
+    max-width: 100%;
+}
+
+.panel {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.panel:nth-child(even){
+    background-color: darkgray;
+}
+
+.panel:nth-child(odd){
+    background-color: #31B7A7;
+}
+
+.panel:first-child{
+    background-color: #325D6D;
+    height: 72vh;
+}
+
+/*undergrad-panel*/
+.undergrad-panel:first-child{
+    background-color: #325D6D;
+/*    height: 72vh;*/
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+/*panel-employment*/
+.panel-employment:first-child{
+    background-color: white;
+/*    height: 72vh;*/
+    position: relative;
+/*    text-align: center;*/
+}
+
+
+/*people-panel*/
+.people-panel:first-child{
+    background-color: white;
+/*    height: 72vh;*/
+    position: relative;
+    text-align: center;
+}
+
+/*people-panel*/
+.research-panel:first-child{
+    background-color: white;
+/*    height: 72vh;*/
+    position: relative;
+    text-align: center;
+}
+
+
+
+section {
+    padding: 50px 0;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.modal {
+    padding: 30px;
+}
+
+.x-close{
+    color: #FF5F47;
+}
+.x-close:hover {
+    color: #FF8F7E;
+}
+
+/* Typography */
+body {
+    color: #303030;
+}
+
+h1 {
+    font-weight: 500;
+    margin: 0 auto auto;
+    text-transform: uppercase;
+    font-size: 3.56rem;
+}
+
+h2 {
+    font-weight: 200;
+    font-size: 2.92rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 2.28rem;
+    text-align: center;
+}
+
+h4 {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.64rem;
+}
+
+h5 {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    text-align: left;
+    color: #FF5F47;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF8F7E;
+}
+
+a.btn, a.btn:hover {
+    color: #ffffff;
+}
+
+
+/* Navigation */
+.nav-wrapper, nav, .navbar-fixed {
+    height: 51px;
+}
+
+nav .brand-logo {
+    margin-left: 20px;
+}
+
+.header-rit {
+    background-image: url(../img/idbar.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 350px 30px;
+    height: 45px;
+    width: 500px;
+    padding: 2em;
+}
+
+.nav-wrapper a {
+    display: inline-block;
+    background-color: transparent !important;
+    text-transform: none;
+    font-weight: normal;
+}
+
+.nav-wrapper a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.nav-wrapper li {
+    line-height: 46px;
+    border-bottom: 4px solid transparent
+}
+
+.nav-wrapper li:hover {
+    border-bottom: 4px solid #FF5F47;
+    background-color: rgba(0,0,0,0.1);
+    height: 51px;
+}
+
+.hamburger {
+    margin: auto 10px;
+}
+
+.nav-wrapper .header-title{
+    text-transform: uppercase;
+    font-size: 1.6rem;
+}
+
+nav .button-collapse i {
+    font-size: 2rem;
+}
+
+.side-nav {
+    background-color: #FF5F47;
+}
+
+.side-nav a {
+    color: white;
+}
+
+.side-nav li {
+    line-height: 80%;
+    height: 51px;
+}
+
+.side-nav li:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* About */
+.ist-title {
+    font-size: 5vw;
+    padding-top: 160px;
+    color: #303030;
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background-image: url(../Media/Apple_Inc./MacBook-Pro.jpg);
+}
+
+blockquote {
+    border-right: 5px solid #FDFEFE;
+    border-left-color: #FDFEFE ;
+    color: #FDFEFE ;
+    font-size: 1.1em;
+    margin: 40px 50px auto;
+    padding: 0 1.5rem;
+}
+
+cite {
+    color: #6e6e6e;
+}
+
+
+/* Degrees */
+.degree-description {
+    text-align: center;
+}
+
+.card.small .card-content{
+    max-height: 100%;
+}
+
+.card.small {
+    padding-top: 15px;
+    height: 390px;
+}
+
+.card-title {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.64rem;
+}
+
+.card-image {
+    margin: 10px auto;
+}
+
+.card-image i {
+    color: #FFAA66;
+}
+
+.card-image i:hover {
+    color: #31B7A7;
+}
+
+.grad-degrees .card-image i {
+    color: #325D6D;
+}
+
+.grad-degrees .card-image i:hover {
+    color: #FFDD87;
+}
+
+.grad-degrees .certificate {
+    height: 250px;
+}
+
+.degree-certificate-list a {
+    text-align: center;
+}
+
+.click-more {
+    text-align: center;
+    text-transform: lowercase;
+    color: #6e6e6e;
+    font-size: 14px;
+}
+
+.click-more p {
+    text-align: center;
+}
+
+.click-more i {
+    display: block;
+    font-size: 20px;
+    margin: 25px auto 0;
+}
+
+.click-more:hover{
+    color: #FFAA66;
+}
+
+.grad-degrees .click-more:hover{
+    color: #325D6D;
+}
+
+.learn-more {
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: none;
+}
+
+.degree-name.activator:hover {
+    color: #FFAA66;
+}
+
+.grad-degrees .degree-name.activator:hover {
+    color: #325D6D;
+}
+
+/* Minors */
+.minors-card {
+    height: 190px;
+}
+
+.minors-card:hover{
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #FFAA66;
+}
+
+.minor-course {
+    margin: 15px auto;
+}
+
+.minor-note {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.accordion h3 {
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 0.3em 2.2em 0.5em;
+}
+
+.accordion .course-description {
+    font-size: 0.65em;
+    line-height: 1.5em;
+}
+
+/* Employment */
+.stats {
+    background: #325d6d;
+    color: #ffffff;
+    height: 100%;
+    min-height: 260px;
+    padding: 30px 10px;
+    margin-bottom: 40px;
+}
+
+.stats p {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.stats h4 {
+    color: #ffdd87;
+    font-size: 2.5em;
+}
+
+.employment p {
+    text-align: center;
+}
+
+table.highlight > tbody > tr:hover {
+    background-color: #ffaa66;
+}
+
+
+table.tablesorter thead tr .header {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #31b7a7;
+}
+
+
+/* People */
+.modal.faculty-staff img {
+    float: left;
+    margin: 10px 30px 0 0;
+    max-height: 180px;
+}
+
+.modal.faculty-staff {
+    text-align: left;
+}
+
+.faculty-staff i {
+    margin-right: 10px;
+}
+
+.faculty-staff .btn{
+    margin: 0 auto 25px;
+    width: 75%;
+}
+
+.facultyImg {
+    max-height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Research */
+.research-card {
+    height: 140px;
+}
+
+.research-card-faculty {
+    height: 110px;
+}
+
+.research-card:hover {
+    cursor: pointer;
+    color: #ffaa66;
+}
+
+.research-area {
+    text-align: left;
+}
+
+.research-area li, .research-card-faculty li{
+    margin: 15px auto;
+}
+
+.research-card-faculty {
+    text-align: center;
+}
+
+.research-faculty.btn {
+    margin: 0 auto 15px;
+    width: 75%;
+}
+
+.card-panel-inner {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.card-panel-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Resources */
+.resources-card {
+    height: 192px;
+}
+
+.resources-card:hover{
+    cursor: pointer;
+    background-color: #325d6d;
+    color: #ffffff;
+}
+
+.resources i {
+    margin-right: 10px;
+}
+
+#studentServices-content h4, #studentAmbassadors-content h4, #forms-content h4, #coopEnrollment-content h4 {
+    text-align: left;
+}
+
+.advisors {
+    margin: 0 auto 25px;
+    text-align: left;
+}
+
+#studentServices-content h5 {
+    color: #325d6d;
+    text-align: left;
+}
+
+.resources-note {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* News */
+
+
+/* Footer */
+.footer-copyright p, .footer-copyright a {
+    text-align: center;
+    margin-top: 0;
+    font-size: 12px;
+    font-weight: 300;
+    margin-left: 0;
+}
+
+footer.page-footer {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+footer a {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 35px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+footer .quickLinks{
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+}
+
+footer .social {
+    border: none;
+    margin: auto 20px;
+}
+
+footer a:hover{
+    color: #ffdd87;
+    text-decoration: none;
+}
+
+footer blockquote {
+    font-style: italic;
+}
+
+/* Courses */
+
+
+/* News Content */
+#news-content h4{
+    margin-top: 40px;
+}
+
+/* Contact */
+.contact {
+    width: 100%;
+    height: 650px;
+    border: none;
+}
+
+#formContainer{
+    padding: 0;
+}
+
+#formContainer h2 {
+    font-weight: 200;
+    font-size: 2.92rem;
+    font-family: "Roboto";
+    color: #FF5F47;
+}
+
+/* Map */
+.map {
+    width: 750px;
+    height: 420px;
+    border: none;
+}
+
+video { display: block; }
+
+.overlay {
+/*    background-color: rgba(255,221,135, 0.8);*/
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    right:0;
+    top:0;
+    z-index: 1;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .map {
+        width: 600px;
+    }
+    .card.small {
+        height: 430px;
+    }
+    .minors-card {
+        height: 240px;
+    }
+    .stats {
+        height: 330px;
+    }
+    .research-card {
+        height: 140px;
+    }
+    .resources-card {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .map {
+        width: 700px;
+    }
+    .modal {
+        padding: 5px;
+    }
+    .grad-degrees .certificate{
+        height: 100%;
+    }
+    .minors-card {
+        height: 230px;
+    }
+    .research-card {
+        height: 120px;
+    }
+    .resources-card {
+        height: 180px;
+    }
+    .panel#intro {
+        background: url(../img/kaboompics.com_mac.jpg) #000 no-repeat center left fixed;
+    }
+    #mainvideo {
+        display: none;
+        background: url(../img/kaboompics.com_mac.jpg) #000 no-repeat center left fixed;
+    }
+    .ist-title{
+        font-size: 9vw;
+        padding-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .grad-degrees .certificate{
+        height: 100%;
+    }
+    .minors-card {
+        height: 100%;
+    }
+    .stats {
+        height: 100%;
+        min-height: inherit;
+    }
+    .stats h4 {
+        font-size: 3.5em;
+    }
+    .research-card {
+        height: 100%;
+    }
+    .research-card-faculty {
+        height: 100%;
+    }
+    .resources-card {
+        height: 100%;
+    }
+
+    .panel#intro {
+        background: url(../img/kaboompics.com_mac.jpg) #000 no-repeat center left fixed;
+    }
+    #mainvideo {
+        display: none;
+        background: url(../img/kaboompics.com_mac.jpg) #000 no-repeat center left fixed;
+    }
+
+    .ist-title{
+        font-size: 12vw;
+        padding-top: 100px;
+    }
+}

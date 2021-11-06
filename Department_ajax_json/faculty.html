@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>IST Department at RIT</title>
+
+<!--CSS-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/tablesorter.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+<!--OTHERS-->
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript">
+    </script>
+    <script src="assets/js/jquery-ui.min.js">
+    </script>
+
+<!--
+    <script src="assets/js/utilities.js" type="text/javascript"></script>
+        
+    <script src="assets/js/script.js" type="text/javascript"></script>
+-->
+        
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        
+<script type="text/javascript">
+    
+    //Use 'proxy.php' in api on http://www.ist.rit.edu/api
+    function XHR_ajax(t, d, id){
+    return $.ajax({
+        type: t,
+        url: 'proxy.php', 
+        dataType: 'json', 
+        data: d,
+        cache: false,
+        async: true,
+        beforeSend: function(){
+            $(id).append('<img src="assets/img/gears.gif" class="spin"/>');
+        }
+        }).always(function(){ // always fires when it comes back, no matter what. so this is where we turn off the spinner
+        $(id).find('.spin').fadeOut(500, function(){
+            $(this).remove();
+        });
+    }).fail(function(){
+        //handle failure
+    });
+}
+    /*This is for action to be performed when the document is read*/
+      let xhr = new XMLHttpRequest(),
+          /*This is for connect to html only*/
+          url = "assets/JSON/data.json";
+    
+//Request is the URL string to flickr containings when user enters tag.
+      xhr.onreadystatechange = function() 
+      {
+        if ( xhr.readyState === 4 && xhr.status === 200 ) 
+        {
+            var json = JSON.parse( xhr.responseText );
+
+            console.log("Display full json")
+            console.log(json);
+
+            getFaculty(json);
+            getStaff(json);
+            getFooter(json);
+         
+        }
+        else {
+            console.log( "Request failed" );
+        }
+      };
+    /* This represent the URL as sending the request to*/
+      xhr.open( "GET", url, true );
+      xhr.send();
+    
+    
+    //OUR PEOPLE
+    //Get list of People (faculty)
+    function getFaculty( json ){
+         var x = '';
+
+        //faculty
+        x = x + '<h3>Faculty</h3>';
+        $.each(json.faculty, function(){
+            x = x + '<div class="col s12 m6 l4 faculty-staff">';
+            x = x + '<div class="w3-card-4"><p class="data-username">'+ this.name + '</p>';
+            x = x + '<img src="' + this.imagePath + '" class="facultyImg" alt="" />';
+            x = x + '<a class="waves-effect waves-light btn modal-trigger" href="#' + this.username +'"  onclick="getSpecificFaculty(this);" data-username="' + this.username + '">' + this.title + '</a></div></div>';
+
+            x = x + '<div class="modal faculty-staff" id="' + this.username +'"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="' + this.username + '-content"></div></div>';
+        });
+        
+            document.getElementById( "faculty" ).innerHTML = x;
+            $('.modal-trigger').leanModal();
+}
+    
+    
+    //Get list of People (Staff)
+    function getStaff( json ){
+        var x = '';
+    
+        //staff
+        x = x + '<h3>Staff</h3>';
+        $.each(json.staff, function(){
+            x = x + '<div class="col s12 m6 l4 faculty-staff">';
+            x = x + '<div class="w3-card-4"><p class="data-username">'+ this.name + '</p>';
+            x = x + '<img src="' + this.imagePath + '" class="facultyImg" alt="" />';
+            x = x + '<a class="waves-effect waves-light btn modal-trigger" href="#' + this.username +'"  onclick="getSpecificFaculty(this);" data-username="' + this.username + '">' + this.title + '</a></div></div>';
+
+            x = x + '<div class="modal faculty-staff" id="' + this.username +'"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="' + this.username + '-content"></div></div>';
+        });
+        
+            document.getElementById( "staff" ).innerHTML = x;
+            $('.modal-trigger').leanModal();
+}
+    
+    
+//BACK MODAL for FACULTY
+function getSpecificFaculty(dom){
+    var usernameID = '#'+$(dom).attr('data-username');
+
+    XHR_ajax('get', {path:'/people/faculty/username=' + $(dom).attr('data-username')}, usernameID+'-content').done(function(json){
+        var x = '';
+
+        x += json.username == "" ? '' : '<h3 class="persimmon-text">' + json.name + '</h3>';
+        x += json.title == "" ? '' : '<h4>' + json.title + '</h4>';
+        x += json.tagline == "" ? '' : '<p><strong>' + json.tagline + '</p></strong>';
+        x += json.imagePath == "" ? '' : '<img src="' + json.imagePath + '"/>';
+        x += '<ul>';
+        x += json.interestArea == ""  || json.interestArea == null ? '' : '<li> Interest Area: ' + json.interestArea + '</li>';
+        x += json.office == ""  || json.office == null ? '' : '<li><i class="fa fa-map-marker" aria-hidden="true"></i> ' + json.office + '</li>';
+        x += json.website == ""  || json.website == null ? '' : '<li><i class="fa fa-globe" aria-hidden="true"></i><a href="' + json.website + '">' + json.website + '</a></li>';
+        x += json.phone == "" || json.phone == null ? '' : '<li><i class="fa fa-phone" aria-hidden="true"></i> ' + json.phone + '</li>';
+        x += json.email == "" || json.email == null ? '' : '<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:' + json.email + '">' + json.email + '</a></li>';
+        x += json.twitter == "" || json.twitter == null ? '' : '<li><i class="fa fa-twitter" aria-hidden="true"></i> ' + json.twitter + '</li>';
+        x += json.facebook == "" || json.facebook == null ? '' : '<li><i class="fa fa-facebook" aria-hidden="true"></i>' + json.facebook + '</li>';
+        x += '</ul>';
+        $(usernameID+'-content').html(x);
+    });
+}
+
+//BACK MODAL for STAFF
+function getSpecificStaff(dom){
+    var usernameID = '#'+$(dom).attr('data-username');
+
+    XHR_ajax('get', {path:'/people/staff/username=' + $(dom).attr('data-username')}, usernameID+'-content').done(function(json){
+        var x = '';
+
+        x += json.username == "" ? '' : '<h3 class="casal-text">' + json.name + '</h3>';
+        x += json.title == "" ? '' : '<h4>' + json.title + '</h4>';
+        x += json.tagline == "" ? '' : '<p><strong>' + json.tagline + '</p></strong>';
+        x += json.imagePath == "" ? '' : '<img src="' + json.imagePath + '"/>';
+        x += '<ul>';
+        x += json.interestArea == ""  || json.interestArea == null ? '' : '<li> Interest Area: ' + json.interestArea + '</li>';
+        x += json.office == ""  || json.office == null ? '' : '<li><i class="fa fa-map-marker" aria-hidden="true"></i> ' + json.office + '</li>';
+        x += json.website == ""  || json.website == null ? '' : '<li><i class="fa fa-globe" aria-hidden="true"></i><a href="' + json.website + '">' + json.website + '</a></li>';
+        x += json.phone == "" || json.phone == null ? '' : '<li><i class="fa fa-phone" aria-hidden="true"></i> ' + json.phone + '</li>';
+        x += json.email == "" || json.email == null ? '' : '<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:' + json.email + '">' + json.email + '</a></li>';
+        x += json.twitter == "" || json.twitter == null ? '' : '<li><i class="fa fa-twitter" aria-hidden="true"></i> ' + json.twitter + '</li>';
+        x += json.facebook == "" || json.facebook == null ? '' : '<li><i class="fa fa-facebook" aria-hidden="true"></i>' + json.facebook + '</li>';
+        x += '</ul>';
+        $(usernameID+'-content').html(x);
+    });
+}
+
+    
+    
+//FOOTER
+function getFooter( json ){
+    
+        var left = '';
+        var right = '';
+        var bottom = '';
+        var modal = '';
+
+        //social
+        left = left + '<h4>' + json.social.title + '</h4>';
+        left = left + '<blockquote>' + json.social.tweet + '</blockquote>';
+        left = left + '<p>' + json.social.by + '</p>';
+        left = left + '<a href="' + json.social.twitter + '" class="social"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a>';
+        left = left + '<a href="' + json.social.facebook + '" class="social"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a>';
+
+        //quicklinks
+        right = right + '<ul>';
+        $.each(json.quickLinks, function(){
+            right = right + '<li class="quickLinks"><a href="' + this.href + '">' + this.title + '</a></li>';
+        });
+
+        //news
+        right = right + '<li class="quickLinks"><a href="#news" onclick="getNews();" class="modal-trigger" data-name="news">News</a></li>';
+        right = right + '<li class="quickLinks"><a href="#contact" class="modal-trigger" data-name="contact">Contact Us</a></li>';
+        right = right + '</ul>';
+
+        // news modal
+        modal = modal + '<div class="modal" id="news"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="news-content"></div></div>';
+
+        // contact modal
+        modal = modal + '<div class="modal" id="contact"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="contact-content"><iframe name="contact" class="contact"  src="http://www.ist.rit.edu/api/contactForm/"></iframe></div></div>';
+
+        //copyright
+        bottom = bottom + '<div class="container">';
+        bottom = bottom + json.copyright.html;
+        bottom = bottom + '</div>';
+    
+        document.getElementById( "footer-left" ).innerHTML = left;
+        document.getElementById( "footer-right" ).innerHTML = right;
+        document.getElementById( "footer-bottom" ).innerHTML = bottom;
+        document.getElementById( ".container-main" ).innerHTML = modal;
+        $('.modal-trigger').leanModal();
+    
+}
+    
+</script>
+    </head>
+    
+    <body>
+        <div class="navbar-fixed">
+            <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper persimmon">
+                    <span class="  hide-on-small-only">
+                        <a href="index.html" class="brand-logo header-rit"></a>
+                    </span>
+                    <span class="hide-on-med-and-up">
+                        <a href="index.html">IST Department at RIT</a>
+                    </span>
+
+                    <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>                
+                </div>
+            </nav>
+        </div>
+    </div>
+        
+        <div class="container container-main">
+            
+
+<!--    PEOPLE-->
+<div class="w3-container">
+  <div class="w3-bar w3-black">
+    <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Faculty')">Faculty</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Staff')">Staff</button>
+    
+  </div>
+  
+  <div id="Faculty" class="w3-container w3-border city">
+    <section class="people-panel people">
+                <div class="container">
+                    <div class="row">
+                        <div id="faculty">
+                        </div>
+                    </div>
+                </div>
+    </section>
+  </div>
+
+  <div id="Staff" class="w3-container w3-border city" style="display:none">
+    <section class="people-panel people">
+                <div class="container">
+                    <div class="row">
+                        <div id="staff">
+                        </div>
+                    </div>
+                </div>
+    </section>
+  </div>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+</script>
+            
+            
+<!--            FOOTER-->
+            <footer class="page-footer persimmon">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12" id="footer-left">
+
+                        </div>
+                        <div class="col l4 offset-l2 s12" id="footer-right">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright" id="footer-bottom">
+
+                </div>
+            </footer>
+
+        </div> <!-- End main container-->
+
+
+
+
+        <script src="assets/js/smooth-scroll.js"></script>
+        <script src="assets/js/jquery.stickytableheaders.js"></script>
+        <script src="assets/js/jquery.tablesorter.js"></script>
+        <script src="assets/js/materialize.min.js"></script>
+        <script>
+
+            $('.modal-trigger').leanModal();
+
+            $('.scrollAbout').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.about'
+                });
+                return false;
+            });
+
+            $('.scrollDegrees').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-degrees'
+                });
+                return false;
+            });
+
+            $('.scrollMinors').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-minors'
+                });
+                return false;
+            });
+
+            $('.scrollEmployment').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.employment'
+                });
+                return false;
+            });
+
+            $('.scrollPeople').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.people'
+                });
+                return false;
+            });
+
+            $('.scrollResearch').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.research'
+                });
+                return false;
+            });
+
+            $('.scrollResources').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.resources'
+                });
+                return false;
+            });
+        </script>
+
+    </body>
+</html>

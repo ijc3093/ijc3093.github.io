@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+/*Color for html background*/
+html{background-color: darkgray;}
+
+/*properties for body*/
+body 
+{
+  font-family: sans-serif;
+ 	margin: 0;
+ 	padding: 0;
+    font-family: serif;
+    background-color: darkgray;
+    max-width: 100%;
+    height: auto;
+}
+
+/*height and max-width for img*/
+img
+    {
+        max-width: 100%;
+        height: auto;
+    }
+/*padding for main*/
+main 
+{
+  padding: 1em;
+    
+}
+
+/*properties for nav*/
+nav 
+{
+  padding: .5em;
+  display: flex;
+  text-align: center;
+  text-decoration: none;
+}
+
+/*properties for nav and span*/
+nav span 
+{
+  display: inline-block;
+  width: 33.3vw;
+  text-decoration: none;
+}
+nav span:nth-child( 2 ) 
+{
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+/*color, text-align, text-decoration for a, h1, h2, img*/
+a, h1, h2, img{
+  color: brown;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*padding for main*/
+ul {
+  padding: 0;
+}
+/*properties for li.item*/
+li.item { 
+  border: 1px solid brown;
+  padding: 1em;
+  width: 90%;
+  list-style-type: none;
+  margin: 1em auto 0;
+  background-color: darksalmon; 
+  text-align: center
+      max-width: 100%;
+        height: auto;
+    float: none;
+}
+
+/*max-width and max-height for li.item*/
+li.item img {
+	padding: 1em;
+	max-width: 90%;
+	max-height: 325px;
+}
+
+/*display for li, a*/
+li a 
+{
+  display: block;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/*float for li*/
+li {
+  float: left;
+  list-style-type: none;
+}
+
+/*bold for front-weight*/
+b
+{
+  font-weight: bold;
+}
+
+/*Center*/
+h1, h2
+{
+    
+    text-align: center;
+}
+
+/*Center*/
+section
+{
+    text-align: center;
+}
+
+/*31em*/
+@media screen and (min-width:31em)
+        {
+          section 
+          {
+            background-color: #184177;
+            background-image: url(assets/imge/WorkOut.png);
+          }
+        
+            img
+            {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+/*50em*/
+@media screen and (min-width:50em)
+        {
+          section 
+          {
+            background-color: #a84609;
+            background-image: url(assets/imge/WorkOut.png);
+          }
+            img
+            {
+                max-width: 100%;
+                height: auto;
+                
+            }
+             
+        }
+
+/*62em*/
+@media screen and (min-width:62em)
+        {
+          section 
+          {
+            background-image: url(assets/imge/WorkOut.png);
+            background-color: #86b5f1;
+            width: 100%;
+/*              width: calc(70% - 1em);*/
+          }
+          img
+            {
+                max-width: 100%;
+                height: auto;
+            }
+          
+        }
+
+/*85em*/
+@media screen and (min-width:85em)
+        {
+          section 
+          {
+              background-image: url(assets/imge/WorkOut.png);
+            background-color: rosybrown;
+            width: 100%;
+          }
+            img
+            {
+                max-width: 100%;
+                height: auto;
+            }
+          
+        }
+
+
+

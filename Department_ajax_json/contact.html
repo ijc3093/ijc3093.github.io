@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>IST Department at RIT</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/tablesorter.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+<!--OTHERS-->
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript">
+    </script>
+    <script src="assets/js/jquery-ui.min.js">
+    </script>
+
+    <script src="assets/js/utilities.js" type="text/javascript"></script>
+        
+    <script src="assets/js/script.js" type="text/javascript"></script>
+        
+        <!--
+    <script src="assets/js/utilities.js" type="text/javascript"></script>
+        
+-->
+<!--    <script src="assets/js/script.js" type="text/javascript"></script>-->
+        
+    </head>
+    <body>
+        <div class="navbar-fixed">
+            <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper persimmon">
+                    <span class="  hide-on-small-only">
+                        <a href="index.html" class="brand-logo header-rit"></a>
+                    </span>
+                    <span class="hide-on-med-and-up">
+                        <a href="index.html">IST Department at RIT</a>
+                    </span>
+
+                    <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>                
+                </div>
+            </nav>
+        </div>
+    </div>
+
+        <div class="container container-main">
+            
+
+<!--            CONTACT-->
+<section class="people-panel people">
+    <div class="w3-container" id="team">
+      <h3 class="w3-center">CONTACT US</h3>
+      <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+
+      <div style="margin-top:48px">
+        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> NY, US</p>
+        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: isaaccuma@gmailmail.com</p>
+        <br>
+        <form action="/action_page.php" target="_blank">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+          <p>
+            <button class="w3-button w3-black" type="submit">
+              <i class="fa fa-paper-plane"></i> SEND MESSAGE
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+</section>
+
+
+            
+<!--            FOOTER-->
+
+            <footer class="page-footer persimmon">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12" id="footer-left">
+
+                        </div>
+                        <div class="col l4 offset-l2 s12" id="footer-right">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright" id="footer-bottom">
+
+                </div>
+            </footer>
+
+
+            <!--
+<div id="contact-form">
+<iframe class="contact" src="http://www.ist.rit.edu/api/contactForm/"></iframe>
+</div>
+-->
+
+
+        </div> <!-- End main container-->
+
+
+
+
+        <script src="assets/js/smooth-scroll.js"></script>
+        <script src="assets/js/jquery.stickytableheaders.js"></script>
+        <script src="assets/js/jquery.tablesorter.js"></script>
+        <script src="assets/js/materialize.min.js"></script>
+        <script>
+
+            $('.modal-trigger').leanModal();
+
+            $('.scrollAbout').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.about'
+                });
+                return false;
+            });
+
+            $('.scrollDegrees').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-degrees'
+                });
+                return false;
+            });
+
+            $('.scrollMinors').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-minors'
+                });
+                return false;
+            });
+
+            $('.scrollEmployment').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.employment'
+                });
+                return false;
+            });
+
+            $('.scrollPeople').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.people'
+                });
+                return false;
+            });
+
+            $('.scrollResearch').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.research'
+                });
+                return false;
+            });
+
+            $('.scrollResources').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.resources'
+                });
+                return false;
+            });
+        </script>
+
+    </body>
+</html>

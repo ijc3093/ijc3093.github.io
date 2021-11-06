@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>IST Department at RIT</title>
+
+        <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/tablesorter.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+<!--OTHERS-->
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript">
+    </script>
+    <script src="assets/js/jquery-ui.min.js">
+    </script>
+
+<!--
+    <script src="assets/js/utilities.js" type="text/javascript"></script>
+        
+    <script src="assets/js/script.js" type="text/javascript"></script>
+-->
+        
+        
+<script type="text/javascript">
+    
+    //Use 'proxy.php' in api on http://www.ist.rit.edu/api
+    function XHR_ajax(t, d, id){
+    return $.ajax({
+        type: t,
+        url: 'proxy.php', 
+        dataType: 'json', 
+        data: d,
+        cache: false,
+        async: true,
+        beforeSend: function(){
+            $(id).append('<img src="assets/img/gears.gif" class="spin"/>');
+        }
+        }).always(function(){ // always fires when it comes back, no matter what. so this is where we turn off the spinner
+        $(id).find('.spin').fadeOut(500, function(){
+            $(this).remove();
+        });
+    }).fail(function(){
+        //handle failure
+    });
+}
+    
+    
+            /*This is for action to be performed when the document is read*/
+      let xhr = new XMLHttpRequest(),
+          /*This is for connect to html only*/
+          url = "assets/JSON/data.json";
+    
+//Request is the URL string to flickr containings when user enters tag.
+      xhr.onreadystatechange = function() 
+      {
+        if ( xhr.readyState === 4 && xhr.status === 200 ) 
+        {
+            var json = JSON.parse( xhr.responseText );
+
+            console.log("Display full json")
+            console.log(json);
+            getResources(json);
+            getFooter(json);
+         
+        }
+        else {
+            console.log( "Request failed" );
+        }
+      };
+    /* This represent the URL as sending the request to*/
+      xhr.open( "GET", url, true );
+      xhr.send();
+
+    
+//Resource
+function getResources( json ){
+    var iconsArray = ['fa-globe', 'fa-info-circle', 'fa-question', 'fa-users', 'fa-check-square-o', 'fa-briefcase']
+    var i = 0;
+    var x = '';
+
+        x = x + '<h2>' + json.title + '</h2>';
+        x = x + '<p class="center-align">' + json.subTitle + '</p>';
+
+        // Study Abroad
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#studyAbroad"  onclick="getStudyAbroadInfo(this);" data-resourceType="studyAbroad"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x + '<h4>' + json.studyAbroad.title + '</h4></div></div></div>';
+
+        x = x + '<div class="modal" id="studyAbroad"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="studyAbroad-content"></div></div>';
+        x = x + '</div>';
+        i++;
+
+        // Student Services
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#studentServices"  onclick="getStudentServicesInfo(this);" data-resourceType="studentServices"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x + '<h4>' + json.studentServices.title + '</h4></div></div></div>';
+
+        x = x + '<div class="modal" id="studentServices"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="studentServices-content"></div></div>';
+        x = x + '</div>';
+        i++;
+
+        // Tutors and Labs
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#tutorsAndLabInformation"  onclick="getTutorsAndLabInfo(this);" data-resourceType="tutorsAndLabInformation"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x += '<h4>' + json.tutorsAndLabInformation.title + '</h4></div></div></div>';
+
+        x = x + '<div class="modal" id="tutorsAndLabInformation"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="tutorsAndLabInformation-content"></div></div>';
+        x = x + '</div>';
+        i++;
+
+        // Student Ambassadors
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#studentAmbassadors"  onclick="getStudentAmbassadorsInfo(this);" data-resourceType="studentAmbassadors"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x + '<h5>' + json.studentAmbassadors.title + '</h5></div></div></div>';
+
+        x = x + '<div class="modal" id="studentAmbassadors"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="studentAmbassadors-content"></div></div>';
+        x = x + '</div>';
+        i++;
+
+        // Forms
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#forms"  onclick="getFormsInfo(this);" data-resourceType="forms"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x + '<h4>Forms</h4></div></div></div>';
+
+        x = x + '<div class="modal" id="forms"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="forms-content"></div></div>';
+        x = x + '</div>';
+        i++;
+
+        // Co-op
+        x = x + '<div class="col s12 m6 l4">';
+        x = x + '<div class="card-panel clearfix resources-card modal-trigger" href="#coopEnrollment"  onclick="getCoopEnrollmentInfo(this);" data-resourceType="coopEnrollment"><div class="card-panel-inner"><div class="card-panel-content">';
+        x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+        x = x + '<h4>' + json.coopEnrollment.title + '</h4></div></div></div>';
+
+        x = x + '<div class="modal" id="coopEnrollment"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="coopEnrollment-content"></div></div>';
+        x = x + '</div>';
+        
+        document.getElementById("resources" ).innerHTML = x;
+        $('.modal-trigger').leanModal();
+}
+    
+//FOOTER
+function getFooter( json ){
+    
+        var left = '';
+        var right = '';
+        var bottom = '';
+        var modal = '';
+
+        //social
+        left = left + '<h4>' + json.social.title + '</h4>';
+        left = left + '<blockquote>' + json.social.tweet + '</blockquote>';
+        left = left + '<p>' + json.social.by + '</p>';
+        left = left + '<a href="' + json.social.twitter + '" class="social"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a>';
+        left = left + '<a href="' + json.social.facebook + '" class="social"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a>';
+
+        //quicklinks
+        right = right + '<ul>';
+        $.each(json.quickLinks, function(){
+            right = right + '<li class="quickLinks"><a href="' + this.href + '">' + this.title + '</a></li>';
+        });
+
+        //news
+        right = right + '<li class="quickLinks"><a href="#news" onclick="getNews();" class="modal-trigger" data-name="news">News</a></li>';
+        right = right + '<li class="quickLinks"><a href="#contact" class="modal-trigger" data-name="contact">Contact Us</a></li>';
+        right = right + '</ul>';
+
+        // news modal
+        modal = modal + '<div class="modal" id="news"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="news-content"></div></div>';
+
+        // contact modal
+        modal = modal + '<div class="modal" id="contact"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="contact-content"><iframe name="contact" class="contact"  src="http://www.ist.rit.edu/api/contactForm/"></iframe></div></div>';
+
+        //copyright
+        bottom = bottom + '<div class="container">';
+        bottom = bottom + json.copyright.html;
+        bottom = bottom + '</div>';
+    
+        document.getElementById( "footer-left" ).innerHTML = left;
+        document.getElementById( "footer-right" ).innerHTML = right;
+        document.getElementById( "footer-bottom" ).innerHTML = bottom;
+        document.getElementById( ".container-main" ).innerHTML = modal;
+        $('.modal-trigger').leanModal();
+    
+}
+
+    
+// Study Abroad modal
+function getStudyAbroadInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">' + json.studyAbroad.title + '</h3>';
+        x = x + '<p>' + json.studyAbroad.description + '</p>';
+        $.each(json.studyAbroad.places, function(){
+            x = x + '<h4 class="left-align">' + this.nameOfPlace + '</h4>';
+            x = x + '<p>' + this.description + '</p>';
+        });
+
+        $(resourceType+'-content').html(x);
+    });
+}
+
+
+// Student Services modal
+function getStudentServicesInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">' + json.studentServices.title + '</h3>';
+
+        //academic advisors
+        x = x + '<h4>' + json.studentServices.academicAdvisors.title + '</h4>';
+        x = x + '<p>' + json.studentServices.academicAdvisors.description + '</p>';
+        x = x + '<p><a class="waves-effect waves-light btn modal-trigger" href="' + json.studentServices.academicAdvisors.faq.contentHref + '">Advising FAQ</a></p>';
+
+        //professional advisors
+        x = x + '<h4>' + json.studentServices.professonalAdvisors.title + '</h4>';
+        $.each(json.studentServices.professonalAdvisors.advisorInformation, function(){
+            x = x + '<h5>' + this.name + '</h5><ul class="advisors">';
+            x = x + '<li><i class="fa fa-thumb-tack" aria-hidden="true"></i>' + this.department + '</li>';
+            x = x + '<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:' + this.email + '">' + this.email + '</a></li></ul>';
+        });
+
+        //faculty advisors
+        x = x + '<h4>' + json.studentServices.facultyAdvisors.title + '</h4>';
+        x = x + '<p>' + json.studentServices.facultyAdvisors.description + '</p>';
+
+        //minor advising
+        x = x + '<h4>' + json.studentServices.istMinorAdvising.title + '</h4>';
+        $.each(json.studentServices.istMinorAdvising.minorAdvisorInformation, function(){
+            x = x + '<h5>' + this.title + '</h5><ul class="advisors">';
+            x = x + '<li><i class="fa fa-user" aria-hidden="true"></i>' + this.advisor + '</li>';
+            x = x + '<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:' + this.email + '">' + this.email + '</a></li></ul>';
+        });
+
+
+        $(resourceType+'-content').html(x);
+    });
+}
+
+// Tutors and Lab modal
+function getTutorsAndLabInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">' + json.tutorsAndLabInformation.title + '</h3>';
+        x = x + '<p>' + json.tutorsAndLabInformation.description + '</p>';
+        x = x + '<p><a class="waves-effect waves-light btn modal-trigger" href="' + json.tutorsAndLabInformation.tutoringLabHoursLink + '">Tutoring and Lab Hours</a></p>';
+
+        $(resourceType+'-content').html(x);
+    });
+}
+
+// Student Ambassadors modal
+function getStudentAmbassadorsInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">' + json.studentAmbassadors.title + '</h3>';
+        //        x += '<img src="' + json.studentAmbassadors.ambassadorsImageSource + '"/>';
+        $.each(json.studentAmbassadors.subSectionContent, function(){
+            x = x + '<h4>' + this.title + '</h4>';
+            x = x + '<p>' + this.description + '</p>';
+        });
+        x += '<p><a class="waves-effect waves-light btn modal-trigger" href="' + json.studentAmbassadors.applicationFormLink + '">Application Form</a></p>';
+        x = x + '<p class="resources-note">' + json.studentAmbassadors.note + '</p>';
+
+        $(resourceType+'-content').html(x);
+    });
+}
+
+// Forms modal
+function getFormsInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">Forms</h3>';
+
+        x = x +  '<h4>Graduate Forms</h4>';
+        $.each(json.forms.graduateForms, function(){
+            x = x + '<p><a href="' + this.href + '">' + this.formName + '</a></p>';
+        });
+
+        x = x +  '<h4>Undergraduate Forms</h4>';
+        $.each(json.forms.undergraduateForms, function(){
+            x = x + '<p><a href="' + this.href + '">' + this.formName + '</a></p>';
+        });
+
+        $(resourceType+'-content').html(x);
+    });
+}
+
+// Coop Enrollment modal
+function getCoopEnrollmentInfo(dom){
+    var resourceType = '#'+$(dom).attr('data-resourceType');
+
+    XHR_ajax('get', {path:'/resources/' + $(dom).attr('data-resourceType')}, resourceType+'-content').done(function(json){
+        var x = '';
+
+        x = x + '<h3 class="casal-text">' + json.coopEnrollment.title + '</h3>';
+        $.each(json.coopEnrollment.enrollmentInformationContent, function(){
+            x = x + '<h4>' + this.title + '</h4>';
+            x = x + '<p>' + this.description + '</p>';
+        });
+        x = x + '<p><a class="waves-effect waves-light btn modal-trigger" href="' + json.coopEnrollment.RITJobZoneGuideLink + '">RIT Job Zone Guide</a></p>';
+
+        $(resourceType+'-content').html(x);
+    });
+}
+    
+</script>
+    </head>
+    <body>
+        
+        <div class="navbar-fixed">
+            <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper persimmon">
+                    <span class="  hide-on-small-only">
+                        <a href="index.html" class="brand-logo header-rit"></a>
+                    </span>
+                    <span class="hide-on-med-and-up">
+                        <a href="index.html">IST Department at RIT</a>
+                    </span>
+
+                    <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>                
+                </div>
+            </nav>
+        </div>
+    </div>
+        
+        <div class="container container-main">
+            
+
+<!--            RESEARCH-->
+            <section class="research-panel research">
+                <div class="container">
+                    <div class="row">
+                        <div id="resources">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>  
+                 
+<!--            FOOTER-->
+
+            <footer class="page-footer persimmon">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12" id="footer-left">
+
+                        </div>
+                        <div class="col l4 offset-l2 s12" id="footer-right">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright" id="footer-bottom">
+
+                </div>
+            </footer>
+
+
+            <!--
+<div id="contact-form">
+<iframe class="contact" src="http://www.ist.rit.edu/api/contactForm/"></iframe>
+</div>
+-->
+
+
+        </div> <!-- End main container-->
+
+
+
+
+        <script src="assets/js/smooth-scroll.js"></script>
+        <script src="assets/js/jquery.stickytableheaders.js"></script>
+        <script src="assets/js/jquery.tablesorter.js"></script>
+        <script src="assets/js/materialize.min.js"></script>
+        <script>
+
+            $('.modal-trigger').leanModal();
+
+            $('.scrollAbout').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.about'
+                });
+                return false;
+            });
+
+            $('.scrollDegrees').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-degrees'
+                });
+                return false;
+            });
+
+            $('.scrollMinors').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-minors'
+                });
+                return false;
+            });
+
+            $('.scrollEmployment').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.employment'
+                });
+                return false;
+            });
+
+            $('.scrollPeople').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.people'
+                });
+                return false;
+            });
+
+            $('.scrollResearch').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.research'
+                });
+                return false;
+            });
+
+            $('.scrollResources').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.resources'
+                });
+                return false;
+            });
+        </script>
+
+    </body>
+</html>

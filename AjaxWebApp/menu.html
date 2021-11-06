@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu</title>
+  <link rel="stylesheet" href="assets/css/style.css" />  
+</head>
+    
+<script>
+    /*This is for action to be performed when the document is read*/
+      let xhr = new XMLHttpRequest(),
+          /*This is for connect to html only*/
+          url = "assets/data.json";
+    
+//Request is the URL string to flickr containings when user enters tag.
+      xhr.onreadystatechange = function() 
+      {
+        if ( xhr.readyState === 4 && xhr.status === 200 ) 
+        {
+          var menuItems = JSON.parse( xhr.responseText );
+          buildMenu( menuItems );
+        }
+      };
+    /* This represent the URL as sending the request to*/
+      xhr.open( "GET", url, true );
+      xhr.send();
+
+    /*This function is for item and then run all items are that from JSON*/
+        function buildMenu( items ) 
+        {
+          var output = "";
+        /*item's Object method*/
+          items.forEach( function( item ) 
+          {
+              output += "<li class='item'" + "onclick=saveSelection(" + item.id + ");> " +
+                          "<img src=assets/imge/" + item.image + " />" + 
+                          "<p>" + item.WorkName + "</p>" +
+                        "</li>";
+          });
+/*document.getElementById("item") is clear as it gets the id of item which is the input.*/
+          document.getElementById( "menu_items" ).innerHTML = output;
+        }
+
+        function saveSelection(sel)
+        {
+        localStorage.setItem( "selected", sel );
+        window.open( "details.html", "_self" );
+        }
+</script>
+    
+<body>
+  <nav>
+    <span><a href="menu.html">Back</a></span>
+    <span><a href="index.html">WorkOut</a></span>
+    <span><a href="menu.html">Home</a></span>
+<!--    <span>Computer Manufacturers</span>-->
+    <span>&nbsp;</span>
+  </nav>
+  <main>
+    <section>
+    <ul id="menu_items"></ul>
+    <aside></aside>
+    </section>
+  </main>
+  
+</body>
+</html>

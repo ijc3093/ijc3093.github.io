@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIT IST</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/jquery.modal.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <script src="assets/javascript/utilities.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="assets/javascript/jquery-3.3.1.min.js"></script>
+    <script src="assets/javascript/script.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="assets/javascript/jquery.browser.js"></script>
+    <script src="assets/javascript/jquery.scroll.min.js"></script>
+    <script src="assets/javascript/jquery.animation.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <script src="assets/javascript/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	 <link rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="./css/font.css">
+	 <link rel="stylesheet" type="text/css" href="./css/style.css">
+     <script src="~/Scripts/jquery.browser.detection.js"></script>
+</head>
+    
+    
+<body>
+    
+<div class="header">
+        <a href="#IMAGE" id="RIT">RIT Informational & Science Technology</a>
+        <ul id="nav">
+            <a href="#about" class="scroll"><li>About</li></a>
+            <a href="#degrees" class="scroll"><li>Degrees</li></a>
+            <a href="#minors" class="scroll"><li>Minors</li></a>
+            <a href="#research" class="scroll"><li>Research</li></a>
+            <a href="#resources" class="scroll"><li>Resources</li></a>
+        </ul>
+</div>
+    
+    <div class="header2">
+        <a href="#IMAGE" id="RIT">RIT Informational & Science Technology</a>
+</div>
+    
+<div role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <ul id="menu">
+      <a href="#about"><li>About</li></a>
+      <a href="#degrees"><li>Degrees</li></a>
+      <a href="#minors"><li>Minors</li></a>
+      <a href="#research"><li>Research</li></a>
+      <a href="#resources"><li>Resources</li></a>
+    </ul>
+  </div>
+</div>
+
+
+
+<!--    Image-->
+    <div id="IMAGE">
+     <div class="header__mouse__container">
+      <img class="header__mouse" src="assets/images/mouse_full.svg" alt="mouse">
+      <img class="header__mouse__roll" src="assets/images/mouse_roll.svg" alt="mouse">
+      <h4 class="header__mouse__text">scroll</h4>
+    </div>
+        
+    </div>
+    
+    
+    
+<!--    <p>Informational Science & Technology</p> -->
+    <div class="alt">
+        <div id="aboutDisplay"></div>
+        <div id="quoteDisplay"></div>
+    </div>
+    
+
+
+    <!--Degrees-->
+    <div id="degrees" class="alt">
+        <p class="sectHeading">Degrees</p>
+        <div id="Tabs" class="alt">
+            <ul>
+              <li><a href="#tabsOne">Undergraduate</a></li>
+              <li><a href="#tabsTwo">Graduate</a></li>
+            </ul>
+            <div id="tabsOne"></div>
+            <div id="tabsTwo"></div>
+        </div>
+
+    </div>
+
+
+
+    
+    <!-- 
+		Minors 
+	 -->
+	 <div id="minor" class="alt">
+        <p class="sectHeading">Minor</p>
+	 	<div class="container">
+	 	</div>	
+	 </div>
+
+    <!-- Coop and professor employemnt -->
+    <div id="tables" class="alt">
+        <p class="sectHeading">Co-op and professor employemnt </p>
+        <div id="accordTo">
+        <h3 id="coopTableT"></h3>
+        <div id="cooptableDegree-content"></div>
+        <h3 id="employmentTableT"></h3> 
+        <div id="employmentTablCont"></div>
+        </div>
+    </div>
+    
+	 <!-- 
+	 Employment  
+	 -->
+    <div class="alt">
+        <div id="employmentDisplay" class="alt"></div>
+        <div id="employmentDesc"></div>
+        <div id="coopSectION" class="alt"></div>
+        <div id="employersSection" class="alt"></div>
+        <div id="careersSection" class="alt"></div>
+    </div>
+    
+    <div id="WorkLocations" class="alt">
+        <p class="sectHeading ">Where Our Students Work</p>
+        <div id="map"><iframe src="http://ist.rit.edu/api/map.php" id="imap"></iframe></div>
+    </div>
+
+
+
+    <!-- Our people -->
+    <div id="people" class="alt">
+        <div id="dialogClick"></div>
+        <div id="progressbar" style="max-width: 500px;"></div>
+
+        <!-- Our Faculty -->
+        <p class="sectHeading">Our Faculty</p>
+        <p class ="sub-heading">Click on any of these links into access to our Faculty.</p>
+        
+        <div id="dialogClickList">
+        </div>   
+        
+        <!-- Our Staff-->
+        <p class="sectHeading">Our Staff</p>
+        <p class ="sub-heading">Click on any of these links into access to our Staff.</p>
+        <div id="dialogClickList2">
+        </div>
+    </div>
+
+
+    
+        <!--
+	       Research
+	    -->
+	    <div id="research" class="alt">
+            <p class="sectHeading">Research Areas</p>
+        </div>
+    
+    
+    
+        <!--
+	       Resources 
+	    -->
+    <div id="resources" class="alt">
+        <p class="sectHeading">Our Resource</p>
+	    <div class="container"></div>
+        <p class="sectHeading"></p>
+        <p class="sub-heading"></p>
+        <div id="resourcesCon"></div>
+	    </div>
+
+    
+     <!--
+	       Contact 
+	    -->
+    <div id="contact" class="alt2">
+        <h1>Contact us</h1>
+        <iframe src="http://ist.rit.edu/api/contactForm.php" id="contact-form"></iframe>
+    </div>
+
+    
+     <!--
+	       Footer 
+	    -->
+    <footer id="footer">
+        <div id="footer-social"></div>
+        <div id="footerInfo"></div>  
+    </footer>
+    
+</body>
+</html>
+

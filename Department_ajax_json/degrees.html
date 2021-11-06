@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>IST Department at RIT</title>
+
+        <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/tablesorter.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+<!--OTHERS-->
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript">
+    </script>
+    <script src="assets/js/jquery-ui.min.js">
+    </script>
+
+<!--
+    <script src="assets/js/utilities.js" type="text/javascript"></script>
+        
+-->
+<!--
+    <script src="assets/js/script.js" type="text/javascript"></script>
+        
+-->
+        
+<script type="text/javascript">
+    
+    
+     //Use 'proxy.php' in api on http://www.ist.rit.edu/api
+    function XHR_ajax(t, d, id){
+    return $.ajax({
+        type: t,
+        url: 'proxy.php', 
+        dataType: 'json', 
+        data: d,
+        cache: false,
+        async: true,
+        beforeSend: function(){
+            $(id).append('<img src="assets/img/gears.gif" class="spin"/>');
+        }
+        }).always(function(){ // always fires when it comes back, no matter what. so this is where we turn off the spinner
+        $(id).find('.spin').fadeOut(500, function(){
+            $(this).remove();
+        });
+    }).fail(function(){
+        //handle failure
+    });
+}
+            /*This is for action to be performed when the document is read*/
+      let xhr = new XMLHttpRequest(),
+          /*This is for connect to html only*/
+          url = "assets/JSON/data.json";
+    
+//Request is the URL string to flickr containings when user enters tag.
+      xhr.onreadystatechange = function() 
+      {
+        if ( xhr.readyState === 4 && xhr.status === 200 ) 
+        {
+            var json = JSON.parse( xhr.responseText );
+
+            console.log("Display full json")
+            console.log(json);
+
+            getUndergraduate(json);
+            getGraduate(json);
+            getMinors(json);
+            getFooter(json);
+         
+        }
+        else {
+            console.log( "Request failed" );
+        }
+      };
+    /* This represent the URL as sending the request to*/
+      xhr.open( "GET", url, true );
+      xhr.send();
+
+
+//DEGREES
+function getUndergraduate( json ){
+    var iconsArray = ['fa-html5', 'fa-user', 'fa-desktop'];
+    var webArray = ['http://wmc.rit.edu', 'http://hcc.rit.edu', 'http://cit.rit.edu'];
+    
+          var x = '';
+        /*item's Object method*/
+          $.each(json.undergraduate, function(i){
+            x = x + '<div class="col s12 m6 l4">';
+            x = x + '<div class="card small"><div class="card-image waves-effect waves-block waves-light"><i class="fa ' + iconsArray[i] + ' activator fa-5x" aria-hidden="true"></i></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">';
+            x = x + '<h4 class="degree-name activator">' + this.title + '</h4>';
+            x = x + '<span class="click-more"><i class="fa fa-plus" aria-hidden="true"></i><p>click to find out more</p></span><p class="learn-more">To learn more about this degree, visit our website: <a href="' + webArray[i] + '">' + webArray[i] + '</a></p></div><div class="card-reveal"><span class="card-title tangerine-text">' + this.title + '</span>';
+            x = x + '<p class="degree-description">' + this.description + '</p>';
+            x = x + '<p class="center-align"><strong>Concentrations:</strong></p>';
+            x = x + '<ul class="degree-concentration-list">';
+            $.each(this.concentrations, function(){
+                x += '<li class="degree-concentration">' + this + '</li>';
+            });
+            x = x + '</ul>';
+            x = x + '</div></div></div>';
+        });
+/*document.getElementById("item") is clear as it gets the id of item which is the input.*/
+          document.getElementById( "undergrad-degrees" ).innerHTML = x;
+}
+
+//Graduate Degree
+function getGraduate( json ){
+    var iconsArray = ['fa-mobile', 'fa-hand-pointer-o', 'fa-server'];
+    var webArray = ['http://it.rit.edu', 'http://hci.rit.edu', 'http://nsa.rit.edu'];
+    var certifArray = ['http://www.rit.edu/programs/web-development-adv-cert', 'http://www.rit.edu/programs/networking-planning-and-design-adv-cert'];
+    var j = 0;
+    
+          var x = '';
+        $.each(json.graduate, function(i){
+            if (this.availableCertificates){
+                x = x + '<div class="col s12">';
+                x = x + '<div class="card small certificate"><div class="card-image"><i class="fa fa-laptop fa-5x" aria-hidden="true"></i></div><div class="card-content"><span class="card-title casal-text">';
+                x = x + '<h4 class="degree-name">' + this.degreeName + '</h4></span>';
+
+                x = x + '<ul class="degree-certificate-list">';
+                $.each(this.availableCertificates, function(){
+                    x = x + '<a href="' + certifArray[j] + '"><li class="degree-certificate">' + this + '</li></a>';
+                    j++;
+                });
+                x = x + '</ul>';
+                x = x + '</div>';
+            }
+            else {
+                x = x + '<div class="col s12 m6 l4">';
+                x = x + '<div class="card small"><div class="card-image waves-effect waves-block waves-light"><i class="fa ' + iconsArray[i] + ' activator fa-5x" aria-hidden="true"></i></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">';
+                x = x + '<h4 class="degree-name activator">' + this.title + '</h4>';
+                x = x + '<span class="click-more"><i class="fa fa-plus" aria-hidden="true"></i><p>click to find out more</p></span><p class="learn-more">To learn more about this degree, visit our website: <a href="' + webArray[i] + '">' + webArray[i] + '</a></p></div><div class="card-reveal"><i class="fa fa-times right" aria-hidden="true"></i><span class="card-title casal-text">' + this.title + '</span>';
+                x = x + '<p class="degree-description">' + this.description + '</p>';
+                x = x + '<p class="center-align"><strong>Concentrations:</strong></p>';
+                x = x + '<ul class="degree-concentration-list">';
+                $.each(this.concentrations, function(){
+                    x = x + '<li class="degree-concentration">' + this + '</li>';
+                });
+                x = x + '</ul>';
+                x = x + '</div></div></div>';
+            }
+        });
+        document.getElementById("grad-degrees" ).innerHTML = x;
+}
+
+
+
+//Minors
+function getMinors( json ){
+    var iconsArray = ['fa-database', 'fa-map-marker', 'fa-medkit', 'fa-code', 'fa-mobile', 'fa-sitemap', 'fa-html5', 'fa-object-group'];
+    
+          var x = '';
+        $.each(json.UgMinors, function(i){
+            x = x + '<div class="col s12 m6 l6">';
+            x = x + '<div class="card-panel clearfix minors-card modal-trigger" href="#' + this.name +'"  onclick="getMinorInfo(this);" data-minor="' + this.name + '"><div class="card-panel-inner"><div class="card-panel-content">';
+            x = x + '<i class="fa ' + iconsArray[i] + ' activator fa-4x" aria-hidden="true"></i>';
+            x = x + '<h4>' + this.title + '</h4></div></div></div>';
+
+            x = x + '<div class="modal" id="' + this.name +'"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content" id="' + this.name + '-content"></div></div>';
+            x = x + '</div>';
+        });
+        document.getElementById("undergrad-minors" ).innerHTML = x;
+        $('.modal-trigger').leanModal();
+}
+
+
+//MinorInfo
+function getMinorInfo(dom){
+    var minorName = '#'+$(dom).attr('data-minor');
+
+    XHR_ajax('get', {path:'/minors/UgMinors/name=' + $(dom).attr('data-minor')}, minorName+'-content').done(function(json){
+        var x = '';
+        x = x + '<h3 class="tangerine-text"> Minor: ' + json.title + '</h3>';
+        x = x + '<p>' + json.description + '</p>';
+        x = x + '<h4 class="left-align">Courses:</h4>';
+
+        x = x + '<div class="accordion">';
+        $.each(json.courses, function(){
+            x = x + '<h3 onclick="getSpecificCourse(this);"  data-courseID="' + this + '">' + this + '</h3>';
+            x = x + '<div id="' + this + '-content"></div>';
+        });
+        x = x + '</div>';
+        x = x + '<p class="minor-note">' + json.note + '</p>';
+
+        $(minorName+'-content').html(x);
+        $( ".accordion" ).accordion({
+            collapsible: true,
+            active: false,
+            heightStyle: "content"
+        });
+    });
+}
+    
+    
+    // Course
+function getCourse(){
+    XHR_ajax('get', {path:'/course/'}, '#course').done(function(json){
+        var x = '';
+        $.each(json, function(){
+            x = x + '<p class="course-title"><strong>' + this.title + '</strong> (' + this.courseID + ')</p>';
+            x = x +'<p class="course-description">' + this.description + '</p>';
+        });
+        $('#course').html(x);
+    });
+}
+
+// Specific Course
+function getSpecificCourse(dom){
+    var courseID = '#'+$(dom).attr('data-courseID');
+
+    XHR_ajax('get', {path:'/course/courseID=' +  $(dom).attr('data-courseID')}, courseID+'-content').done(function(json){
+        var x = '';
+        x = x + '<p><strong>' + json.title + '</strong> (' + json.courseID + ')</p>';
+        x = x + '<p class="course-description">' + json.description + '</p>';
+        $(courseID+'-content').html(x);
+    });
+}
+
+// Courses by degree
+function getCourses(){
+    XHR_ajax('get', {path:'/courses/'}, '#courses').done(function(json){
+        var x = '';
+        $.each(json, function(){
+            x = x + '<p class="course-title><strong>' + this.degreeName + '</strong> (' + this.semester + ')</p>';
+            x = x + '<ul class="courses-list">';
+            $.each(this.courses, function(){
+                x += '<li class="courses">' + this + '</li>';
+            });
+            x = x + '</ul>';
+        });
+        $('#courses').html(x);
+    });
+}
+
+    
+//FOOTER
+function getFooter( json ){
+    
+        var left = '';
+        var right = '';
+        var bottom = '';
+        var modal = '';
+
+        //social
+        left = left + '<h4>' + json.social.title + '</h4>';
+        left = left + '<blockquote>' + json.social.tweet + '</blockquote>';
+        left = left + '<p>' + json.social.by + '</p>';
+        left = left + '<a href="' + json.social.twitter + '" class="social"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a>';
+        left = left + '<a href="' + json.social.facebook + '" class="social"><i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a>';
+
+        //quicklinks
+        right = right + '<ul>';
+        $.each(json.quickLinks, function(){
+            right = right + '<li class="quickLinks"><a href="' + this.href + '">' + this.title + '</a></li>';
+        });
+
+        //news
+        right = right + '<li class="quickLinks"><a href="#news" onclick="getNews();" class="modal-trigger" data-name="news">News</a></li>';
+        right = right + '<li class="quickLinks"><a href="#contact" class="modal-trigger" data-name="contact">Contact Us</a></li>';
+        right = right + '</ul>';
+
+        // news modal
+        modal += '<div class="modal" id="news"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="news-content"></div></div>';
+
+        // contact modal
+        modal += '<div class="modal" id="contact"><span class="right"><a href="#!" class="modal-action modal-close x-close"><i class="fa fa-times" aria-hidden="true"></i></a></span><div class="modal-content clearfix" id="contact-content"><iframe name="contact" class="contact"  src="http://www.ist.rit.edu/api/contactForm/"></iframe></div></div>';
+
+        //copyright
+        bottom = bottom + '<div class="container">';
+        bottom = bottom + json.copyright.html;
+        bottom = bottom + '</div>';
+    
+        document.getElementById( "footer-left" ).innerHTML = left;
+        document.getElementById( "footer-right" ).innerHTML = right;
+        document.getElementById( "footer-bottom" ).innerHTML = bottom;
+//        document.getElementById( ".container-main" ).innerHTML = modal;
+        $('.modal-trigger').leanModal();
+    
+}
+
+</script>
+    </head>
+    <body>
+        
+        <div class="navbar-fixed">
+            <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper persimmon">
+                    <span class="  hide-on-small-only">
+                        <a href="index.html" class="brand-logo header-rit"></a>
+                    </span>
+                    <span class="hide-on-med-and-up">
+                        <a href="index.html">IST Department at RIT</a>
+                    </span>
+
+                    <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="degrees.html" >Degrees</a></li>
+                        <li><a href="research.html" >Research</a></li>
+                        <li><a href="coop.html" >Employment</a></li>
+                        <li><a href="faculty.html" >Faculty</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html" >Contact</a></li>
+                    </ul>                
+                </div>
+            </nav>
+        </div>
+    </div>
+        
+        <div class="container container-main">
+            
+<!--            UNDERGRADUATE DEGREE-->
+           <section class="undergrad-panel undergrad-degrees">
+                <div class="container">
+                    <div class="col s12 clearfix">
+                        <h2>Undergraduate Degrees</h2>
+                    </div>
+                    <div class="row">
+                        <div id="undergrad-degrees">
+
+                        </div>
+                    </div>
+                    
+                          
+<!--            GRADUATE DEGREES-->
+                    <div class="col s12  clearfix">
+                        <h2>Graduate Degrees</h2>
+                    </div>
+                    <div class="row">
+                        <div id="grad-degrees">
+
+                        </div>
+                    </div>
+                </div>
+               
+            </section>
+
+<!--            MINORS-->
+            <section class="panel undergrad-minors">
+                <div class="container">
+                    <h2>Minors</h2>
+                    <div class="row">
+                        <div id="undergrad-minors">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+<!--            FOOTER-->
+
+            <footer class="page-footer persimmon">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12" id="footer-left">
+
+                        </div>
+                        <div class="col l4 offset-l2 s12" id="footer-right">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright" id="footer-bottom">
+
+                </div>
+            </footer>
+
+
+            <!--
+<div id="contact-form">
+<iframe class="contact" src="http://www.ist.rit.edu/api/contactForm/"></iframe>
+</div>
+-->
+
+
+        </div> <!-- End main container-->
+
+
+
+
+        <script src="assets/js/smooth-scroll.js"></script>
+        <script src="assets/js/jquery.stickytableheaders.js"></script>
+        <script src="assets/js/jquery.tablesorter.js"></script>
+        <script src="assets/js/materialize.min.js"></script>
+        <script>
+
+            $('.modal-trigger').leanModal();
+
+            $('.scrollAbout').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.about'
+                });
+                return false;
+            });
+
+            $('.scrollDegrees').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-degrees'
+                });
+                return false;
+            });
+
+            $('.scrollMinors').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.undergrad-minors'
+                });
+                return false;
+            });
+
+            $('.scrollEmployment').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.employment'
+                });
+                return false;
+            });
+
+            $('.scrollPeople').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.people'
+                });
+                return false;
+            });
+
+            $('.scrollResearch').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.research'
+                });
+                return false;
+            });
+
+            $('.scrollResources').on('click', function() {
+                $.smoothScroll({
+                    scrollElement: $('html, body'),
+                    scrollTarget: '.resources'
+                });
+                return false;
+            });
+        </script>
+
+    </body>
+</html>

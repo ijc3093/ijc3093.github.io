@@ -1,0 +1,211 @@
+{
+    "_comment": "This file serves as the data source for this project. All options selected by the user will be redirected and determined here to choose the next options for the selected answer",
+    "_topic": "What is the best energy drink that suits your preferences?",
+    
+"data": {
+        "_comment": "All data for the select dropdown options are populated through here the data here",
+    
+        
+        "init": ["--Select an Option--", "Car", "Truck", "Motorcycle"],
+        
+        
+        "Car": ["--Select an Option--", "Ford", "Dodge", "Chevrotte"],
+                    "Ford":["--Select an Option--", "Mustang", "Shelby"],
+                        "Mustang": ["--Select an Option--", "2001--Mustang",  "2005--Mustang",  "2010--Mustang",   "2015--Mustang",  "2018--Mustang"],
+                            "Year": ["--Select an Option--"],
+                                "2001--Mustang":"media/2001Ford.png",
+                                "2005--Mustang":"media/2005Ford.png",  
+                                "2010--Mustang":"media/2010Ford.png",
+                                "2015--Mustang":"media/2015Ford.png",
+                                "2018--Mustang":"media/2018Mustang.png",
+    
+    
+                        "Shelby": ["--Select an Option--", "2001--Shelby",  "2005--Shelby", "2010--Shelby",  
+                                  "2015--Shelby",  "2018--Shelby"],
+                            "Year": ["--Select an Option--"],
+                            "2001--Shelby":"media/2004Shelby.png",
+                                "2005--Shelby":"media/2007Shelby.png",  
+                                "2010--Shelby":"media/2010Shelby.png",
+                                "2015--Shelby":"media/2017Shelby.png",
+                                "2018--Shelby":"media/2018Shelby.png",
+    
+                    "Dodge":["--Select an Option--", "Challenger", "Charger", "Viper"],
+                        "Year": ["--Select an Option--"],
+                        "Challenger": ["--Select an Option--",  "2008--Challenger", "2014--Challenger", "2015--Challenger"],
+                            "Year": ["--Select an Option--"],
+                                "2008--Challenger":"media/2008Challenger.png",
+                                "2014--Challenger":"media/2014Challenger.png",  
+                                "2015--Challenger":"media/2015Challenger.png",
+                                
+    
+                        "Charger": ["--Select an Option--", "2008--Charger",  "2014--Charger", "2015--Charger"],
+                            "Year": ["--Select an Option--"],
+                                "2008--Charger":"media/2008Charger.png",
+                                "2014--Charger":"media/2014Charger.png",  
+                                "2015--Charger":"media/2015Charger.png",
+                                
+    
+                        "Viper": ["--Select an Option--", "2003--Viper",  "2019--Viper"],
+                            "Year": ["--Select an Option--"],
+                            "2003--Viper":"media/2003Viper.png",
+                                "2019--Viper":"media/2019Viper.png",  
+                                
+                            
+                    "Chevrotte":["--Select an Option--", "Camaro", "Corvette"],
+    
+                        "Camaro": ["--Select an Option--", "2010--Camaro",  "2012--Camaro",  "2014--Camaro",   "2018--Camaro"],
+                            "Year": ["--Select an Option--"],
+                                "2010--Camaro":"media/2010Camaro.png",
+                                "2012--Camaro":"media/2012Camaro.png",  
+                                "2014--Camaro":"media/2014Camaro.png",
+                                "2018--Camaro":"media/2018Camaro.png",
+                    
+    
+                        "Corvette": ["--Select an Option--", "2005--Corvette",  "2017--corvette"              ],
+                            "Year": ["--Select an Option--"],
+                                "2005--Corvette":"media/2005corvette.png",  
+                                "2017--corvette":"media/2017corvette.png",
+    
+           
+        "Truck": ["--Select an Option--", "Truck--Ford", "Truck--Dodge", "Truck--Chevrotte"],
+                    "Truck--Ford":["--Select an Option--", "TruckFord"],
+                        
+                        "TruckFord": ["--Select an Option--", "2008--TruckFord",  "2010--TruckFord",  "2017--TruckFord",   "2018--TruckFord"],
+                            "Year": ["--Select an Option--"],
+                                "2008--TruckFord":"media/2008TruckFord.png",
+                                "2010--TruckFord":"media/2010TruckFord.png",  
+                                "2017--TruckFord":"media/2017TruckFord.png",
+                                "2018--TruckFord":"media/2018TruckFord.png",
+    
+    
+                    "Truck--Dodge":["--Select an Option--", "TruckDodge"],
+                        "TruckDodge": ["--Select an Option--", "2018--Ram",  "2012--Recalls"],
+                            "Year": ["--Select an Option--"],
+                                "2018--Ram":"media/RamTrucks.png",
+                                "2012--Recalls":"media/DodgeRecalls.png",  
+                                
+                    
+                    "Truck--Chevrotte":["--Select an Option--", "TruckChevrotte"],
+    
+                       "TruckChevrotte": ["--Select an Option--", "2019--Hennessey", "2019--ChevySilverado"],
+                            "Year": ["--Select an Option--"],
+                                "2019--Hennessey":"media/Hennessey.png",
+                                "2019--ChevySilverado":"media/2019ChevySilverado.png",
+    
+    
+    "Motorcycle": ["--Select an Option--", "Motorcycle1", "Motorcycle2", "Motorcycle3"],
+                "Motorcycle1":["--Select an Option--", "Motor1"],
+                        
+                        "Motor1": ["--Select an Option--", "2020Street",  "Newron",  "Harley-Davidson"],
+                            "Year": ["--Select an Option--"],
+                                "2020Street":"media/Newron.png",  
+                                "Newron":"media/Newron.png",
+                                "Harley-Davidson":"media/2019Harley-Davidson.png",
+    
+    
+                "Motorcycle2":["--Select an Option--", "Motor2"],
+                        "Motor2": ["--Select an Option--", "Novus",  "Tarus", "Taeform"],
+                            "Year": ["--Select an Option--"],
+                                "Novus":"media/Novus.png",
+                                "Tarus":"media/Tarus.png", 
+                                "Taeform":"media/Taeform.png",
+                                
+                    
+                "Motorcycle3":["--Select an Option--", "Motor3"],
+                       "Motor3": ["--Select an Option--", "2019--Hennessey", "2019--ChevySilverado"],
+                            "Year": ["--Select an Option--"],
+                                "CVO":"media/CVO.png",
+                                "Chopper":"media/Chopper.png",
+                                "Nash":"media/Nash.png"
+    
+        
+},
+"text": {
+        "_comment": "All questions for select dropdowns are populated through the data here",
+
+        "init": "Vehicle",
+                
+                "Car": "Make",
+                       "Ford": "Model",
+                               "Mustang": "Year",
+                                    "Year": "Here",
+                                        "2001--Mustang": "2001 Mustang GT",
+                                        "2005--Mustang": "2005 Mustang GT",
+                                        "2010--Mustang": "2001 Mustang V6",
+                                        "2015--Mustang": "2015 Mustang BOSS",
+                                        "2018--Mustang": "2018 Mustang GT",
+                                    
+    
+                               "Shelby": "Year",
+                                    "2001--Shelby": "2001 Shelby",
+                                        "2005--Shelby": "2005 Shelby",
+                                        "2010--Shelby": "2010 Shelby",
+                                        "2015--Shelby": "2015 Shelby",                                         
+                                        "2018--Shelby": "2018 Shelby",
+    
+                    "Dodge": "Model",
+                               "Challenger": "Year",
+                                        "2008--Challenger": "2008 Challenger",
+                                        "2014--Challenger": "2014 Challenger",
+                                        "2015--Challenger": "2015 Challenger",                            
+                               "Charger": "Year",
+                                    "2008--Charger": "2008 Charger",
+                                        "2014--Charger": "2014 Charger",
+                                        "2015--Charger": "2015 Charger",
+    
+                               "Viper": "Year",
+                                    "2003--Viper": "2003 Viper",
+                                        "2019--Viper": "2019 Viper",
+                                        
+                    "Chevrotte": "Model",
+                               "Camaro": "Year",
+                                    "2010--Camaro": "2010 Camaro",
+                                    "2012--Camaro": "2012 Camaro",
+                                    "2014--Camaro": "2014 Camaro",
+                                    "2018--Camaro": "2018 Camaro",                                         
+                                    
+                               "Corvette": "Year",
+                                    "2005--Corvette": "2005 corvette",
+                                    "2017--corvette": "2017 corvette",
+                
+                "Truck": "Make",
+                    "Truck--Ford": "Model",
+                                "TruckFord": "Year",
+                                    "2008--TruckFord": "Here's car",
+                                        "2010--TruckFord": "2010 Truck Ford",
+                                        "2017--TruckFord": "2017 Truck Ford",
+                                        "2018--TruckFord": "2018 Truck Ford",                        
+    
+                       "Truck--Dodge": "Model",
+                               "TruckDodeg": "Year",
+                                    "2018--Ram": "2018 Ram",
+                                    "2012--Recalls": "2012 Recalls",
+    
+                       "Truck--Chevrotte": "Model",
+                               "TruckChevrotte": "Year",
+                                "2019--ChevySilverado": "2019 ChevySilverado",
+                                "2019--Hennessey": "2019 Hennessey",
+    
+                
+                "Motorcycle": "Make",
+                     "Motorcycle1": "Model",
+                                "Motor1": "Year",
+                                    "2020Street": "Newron",
+                                        "Newron": "Newron",
+                                        "Harley-Davidson": "Harley-Davidson",
+                                        
+    
+                       "Motorcycle2": "Model",
+                               "Motor2": "Year",
+                                    "Novus": "Novus",
+                                    "Tarus": "Tarus",
+                                    "Taeform": "Taeform",
+    
+                       "Motorcycle3": "Model",
+                               "Motor3": "Year",
+                                "CVO": "CVO",
+                                "Chopper": "Chopper",
+                                "Nash": "Nash"
+    
+    }
+}

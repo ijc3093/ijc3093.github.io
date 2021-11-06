@@ -1,0 +1,128 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: steelblue;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+}
+nav{
+  top: 0;
+  position: absolute;
+  width: 100%;
+  text-align: right;
+}
+select {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+
+
+div {
+	display: block;
+}
+
+input[type="button"]{
+font-size: 13px;
+background: linear-gradient(#20B2AA 5%, #87CEFA 100%);
+border: 1px solid #e5a900;
+color: #4E4D4B;
+font-weight: bold;
+cursor: pointer;
+width: 15%;
+border-radius: 5px;
+padding: 10px 0;
+outline:none;
+}
+
+input[type=text],input[type=password]{
+width: 25%;
+height: 20px;
+padding: 2px;
+margin-bottom: 10px;
+margin-top: 2px;
+border: 2px solid  	#008B8B;
+color: #4f4f4f;
+font-size: 10px;
+border-radius: 5px;
+}
+
+textarea{
+padding: 2px;
+margin-bottom: 10px;
+margin-top: 2px;
+border: 2px solid  	#008B8B;
+color: #4f4f4f;
+font-size: 10px;
+border-radius: 5px;
+}
+
+
+li {
+  display: inline;  
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+    padding: 14px 14px;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.dropdown {
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: cadetblue;
+    color: white;
+    border-radius: 50px;
+    width: 200px;
+    padding: 25px;
+    padding-bottom: 50px;
+    display: block;
+    text-align: center;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.dropdown > p {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.image, #form , .className{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: cadetblue;
+    border-color: lightblue;
+    border-style: dashed;
+    border-width: 5px;
+    padding: 30px;
+    text-align: center;
+    float: none;
+    display: block;
+    border-radius: 50px;
+}
+.image{
+    position: relative;
+    display: block;
+}
+img {
+    width: 600px;
+    border-radius: 50px;
+    border-width: 5px;
+}
